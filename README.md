@@ -1,5 +1,5 @@
 # NBA
-A tutorial on collecting game day from the play offs, finding a specific games PBP and the associated shot location data.
+A tutorial on collecting game day from the play offs, finding a specific games PBP and the associated shot location data using the NBA API
 
 The main script is split into three sections.
 The first call gets the details of all the games within the playoff season for last year.

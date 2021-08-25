@@ -7,3 +7,5 @@ The second part will find all the events for that game.
 The third is a call for shot location data for that game.
 
 If you would like to find all the events and all shots for a whole league / season, please take a look at the code stored in the LOOP folder.
+
+See the full tutorial over at cj-mayes.com

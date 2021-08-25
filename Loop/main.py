@@ -42,7 +42,6 @@ for i in game_id_list[1::]:
         print('Timeout error for plays')
         time.sleep(3)
 
-
 """Print the first with a header"""
 response = shotchartdetail.ShotChartDetail(
         team_id=0,
@@ -57,5 +56,36 @@ results = content['resultSets'][0]
 headers = results['headers']
 rows = results['rowSet']
 df = pd.DataFrame(rows)
-df.columns = headers
 df.to_csv('ShotData.csv', mode='w', index=False, header=True)
+
+
+"""Find the shot details for the chosen game"""
+
+game_counter = 1
+
+for i in game_id_list[1::]:
+    try:
+        response = shotchartdetail.ShotChartDetail(
+        team_id=0,
+        player_id=0,
+        game_id_nullable=game_id_list[game_counter],
+        context_measure_simple='FGA',
+        season_type_all_star='Playoffs'
+        )
+        content = json.loads(response.get_json())
+        results = content['resultSets'][0]
+        rows = results['rowSet']
+        df = pd.DataFrame(rows)
+        headers = results['headers']
+        df.to_csv('ShotData.csv', mode='a', index=False, header=False)
+        print(f"{game_counter} has been exported for shots")
+        game_counter = game_counter + 1
+        time.sleep(3)
+    except ValueError:
+        print(f"The {game_counter} has an error for shots")
+        game_counter = game_counter + 1
+        time.sleep(3)
+        pass
+    except requests.exceptions.ReadTimeout:
+        print('Timeout error for shot')
+        time.sleep(3)

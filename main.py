@@ -38,9 +38,9 @@ except requests.exceptions.ReadTimeout:
 try:
     response = shotchartdetail.ShotChartDetail(
         team_id=0,  # When set to zero it takes all teams
-        player_id=0,  # When set to zero it takes everyone
+        player_id=0,  # When set to zero it takes all players
         game_id_nullable='0042000406',
-        context_measure_simple='FGA',  # <-- Default is 'PTS' and will only return made shots, but we want
+        context_measure_simple='FGA',  # <-- All shots, Default is 'PTS' (Shots Made)
         season_type_all_star='Playoffs'
     )
     content = json.loads(response.get_json())

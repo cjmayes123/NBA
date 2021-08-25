@@ -60,7 +60,6 @@ df.to_csv('ShotData.csv', mode='w', index=False, header=True)
 
 
 """Find the shot details for the chosen game"""
-
 game_counter = 1
 
 for i in game_id_list[1::]:

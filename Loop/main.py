@@ -13,16 +13,14 @@ try:
         season_type_nullable="Playoffs"
     )
     time.sleep(3)
+    all_games = result.get_data_frames()[0]
+    all_games.to_csv('Games.csv', index=False)
+    game_id = all_games.iloc[:, 4]
+    game_id_list = game_id.values.tolist()
+    game_id_list = list(set(game_id_list))
 except requests.exceptions.ReadTimeout:
     print('Timeout error for games')
     time.sleep(3)
-
-all_games = result.get_data_frames()[0]
-all_games.to_csv('Games.csv', index=False)
-
-game_id = all_games.iloc[:,4]
-game_id_list = game_id.values.tolist()
-game_id_list = list(set(game_id_list))
 
 """Print the First Game with header"""
 pbp = playbyplayv2.PlayByPlayV2(game_id_list[0])

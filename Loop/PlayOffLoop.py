@@ -76,6 +76,7 @@ for i in game_id_list[1::]:
         rows = results['rowSet']
         df = pd.DataFrame(rows)
         headers = results['headers']
+        df.columns = headers
         df.to_csv('ShotData.csv', mode='a', index=False, header=False)
         print(f"{game_counter} has been exported for shots")
         game_counter = game_counter + 1

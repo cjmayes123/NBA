@@ -6,11 +6,6 @@ import json
 import pandas as pd
 import time
 
-"""Documentation"""
-#https://github.com/swar/nba_api/blob/master/docs/nba_api/stats/endpoints/leaguegamefinder.md
-#https://github.com/swar/nba_api/blob/master/docs/nba_api/stats/endpoints/playbyplayv2.md
-#https://github.com/swar/nba_api/blob/master/docs/nba_api/stats/endpoints/shotchartdetail.md
-
 """Get the games so we can choose what one we want to look at"""
 try:
     result = leaguegamefinder.LeagueGameFinder(

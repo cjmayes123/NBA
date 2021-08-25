@@ -24,7 +24,7 @@ all_games.to_csv('Games.csv', index=False)
 """Take an example Game_ID from the Games CSV"""
 game_id = '0042000406'
 
-# Print the Play by Play
+"""Print the Play by Play"""
 try:
     pbp = playbyplayv2.PlayByPlayV2(game_id)
     pbp = pbp.get_data_frames()[0]
@@ -40,7 +40,7 @@ try:
         team_id=0,  # When set to zero it takes all teams
         player_id=0,  # When set to zero it takes everyone
         game_id_nullable='0042000406',
-        context_measure_simple='FGA',  # All shots, Default is 'PTS' (Shots Made)
+        context_measure_simple='FGA',  # <-- Default is 'PTS' and will only return made shots, but we want
         season_type_all_star='Playoffs'
     )
     content = json.loads(response.get_json())
